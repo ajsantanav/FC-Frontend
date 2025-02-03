@@ -18,19 +18,20 @@ const getClasses = async () => {
                 return {
                     index: details.index,
                     name: details.name,
-                    proficiencies: details.proficiencies,
-                    subclasses: details.subclasses // Fixed typo here
+                    proficiencies: details.proficiencies.map(prof => prof.name),
+                    subclasses: details.subclasses.map(sub => sub.name)
                 };
             })
         );
 
-        classInfo.forEach((c) => console.log(`Class: ${c.name}, Subclasses:`, c.subclasses));
-
+        classInfo.forEach((c) =>
+            console.log(`Class: ${c.name}, Proficiencies:`, c.proficiencies, `Subclasses:`, c.subclasses)
+        );
        
     }
-    catch(err)
-    {
-        console.error("Error fetching D&D classes:", err);    }
+    catch(err) {
+        console.error("Error fetching D&D classes:", err);   
+    }
 };
 
 getClasses();
