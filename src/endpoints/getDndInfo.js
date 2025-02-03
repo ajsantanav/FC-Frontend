@@ -35,7 +35,7 @@ const getClasses = async () => {
 };
 
 const getMonsters = async () => {
-    const url = `${API_URL}/monsters`;
+    const url = `${API_URL}/monsters?limit=100`;
     console.log(url)
     try {
         const response = await fetch(url);
@@ -62,21 +62,57 @@ const getMonsters = async () => {
                     intelligence: details.intelligence,
                     wisdom: details.wisdom,
                     charisma: details.charisma,
-                    image: details.image
+                    image: "https://www.dnd5eapi.co" + details.image
                 };
             })
         );
 
-        monsterInfo.forEach((m) =>
+        // monsterInfo.forEach((m) =>
+        //     console.log(
+        //         `Monster: ${m.name}, Size: ${m.size}, Alignment: ${m.alignment}, HP: ${m.hit_points}, Image: ${m.image ? m.image : 'No image available'}`
+        //     )
+        // );
+       
+    }
+    catch(err) {
+        console.error("Error fetching D&D Monsters:", err);   
+    }
+};
+
+const getRaces = async () => {
+    const url = `${API_URL}/races`;
+    console.log(url)
+    try {
+        const response = await fetch(url);
+        const raceData = await response.json();
+        console.log(raceData)
+
+        const raceInfo = await Promise.all(
+            raceData.results.map(async (index) => {
+                console.log(index.index)
+                const monsterResponse = await fetch(`${API_URL}/races/${index.index}`);
+                const details = await monsterResponse.json();
+                
+
+                return {
+                    index: details.index,
+                    name: details.name,
+                    size: details.size,
+                    speed: details.speed,
+                    languages: details.languages.map(lang => lang.name)
+
+                };
+            })
+        );
+
+        raceInfo.forEach((r) =>
             console.log(
-                `Monster: ${m.name}, Size: ${m.size}, Alignment: ${m.alignment}, HP: ${m.hit_points}, Image: ${m.image ? m.image : 'No image available'}`
+                `Race: ${r.name}, Size: ${r.size}, Languages: ${r.languages}, Speed: ${r.speed} `
             )
         );
        
     }
     catch(err) {
-        console.error("Error fetching D&D classes:", err);   
+        console.error("Error fetching D&D Races:", err);   
     }
 };
-
-getMonsters();
