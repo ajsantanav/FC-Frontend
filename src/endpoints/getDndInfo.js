@@ -1,7 +1,7 @@
 const API_URL = "https://www.dnd5eapi.co/api";
 
 const getClasses = async () => {
-    const url = new URL(`${API_URL}/classes`);
+    const url = `${API_URL}/classes`;
     console.log(url)
     try {
         const response = await fetch(url);
@@ -11,12 +11,9 @@ const getClasses = async () => {
         const classInfo = await Promise.all(
             classes.results.map(async (index) => {
                 console.log(index.index)
-                const classResponse = await fetch(`${API_URL}/classes/${classItem.index}`);
+                const classResponse = await fetch(`${API_URL}/classes/${index.index}`);
                 const details = await classResponse.json();
                 
-                if (!classResponse.ok) {
-                    throw new Error(`Failed to fetch details for class: ${classItem.index}`);
-                }
 
                 return {
                     index: details.index,
@@ -33,8 +30,7 @@ const getClasses = async () => {
     }
     catch(err)
     {
-        console.error(err);
-    }
+        console.error("Error fetching D&D classes:", err);    }
 };
 
 getClasses();
