@@ -8,12 +8,14 @@ function useRaces() {
 
     useEffect(()=> {
         const fetchRaces = async () => {
-            
-        }
-    })
-    return (
-    <div>useRaces</div>
-  )
+            const {races} = await getRaces();
+            setRaces()
+        };
+
+        fetchRaces()
+    }, []);
+
+    return { races, loading, error }
 }
 
 export default useRaces
