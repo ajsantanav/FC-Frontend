@@ -1,6 +1,6 @@
 const API_URL = "https://www.dnd5eapi.co/api";
 
-const getClasses = async () => {
+export const getClasses = async () => {
     const url = `${API_URL}/classes`;
     // console.log(url)
     try {
@@ -27,6 +27,7 @@ const getClasses = async () => {
         // classInfo.forEach((c) =>
         //     console.log(`Class: ${c.name}, Proficiencies:`, c.proficiencies, `Subclasses:`, c.subclasses)
         // );
+        return { classes: classInfo };
        
     }
     catch(err) {
@@ -34,17 +35,17 @@ const getClasses = async () => {
     }
 };
 
-const getMonsters = async () => {
+export const getMonsters = async () => {
     const url = `${API_URL}/monsters?limit=100`;
-    console.log(url)
+    // console.log(url)
     try {
         const response = await fetch(url);
         const monsterData = await response.json();
-        console.log(monsterData)
+        // console.log(monsterData)
 
         const monsterInfo = await Promise.all(
             monsterData.results.map(async (index) => {
-                console.log(index.index)
+                // console.log(index.index)
                 const monsterResponse = await fetch(`${API_URL}/monsters/${index.index}`);
                 const details = await monsterResponse.json();
                 
@@ -72,24 +73,24 @@ const getMonsters = async () => {
         //         `Monster: ${m.name}, Size: ${m.size}, Alignment: ${m.alignment}, HP: ${m.hit_points}, Image: ${m.image ? m.image : 'No image available'}`
         //     )
         // );
-       
+        return { monsters: monsterInfo };
     }
     catch(err) {
         console.error("Error fetching D&D Monsters:", err);   
     }
 };
 
-const getRaces = async () => {
+export const getRaces = async () => {
     const url = `${API_URL}/races`;
-    console.log(url)
+    // console.log(url)
     try {
         const response = await fetch(url);
         const raceData = await response.json();
-        console.log(raceData)
+        // console.log(raceData)
 
         const raceInfo = await Promise.all(
             raceData.results.map(async (index) => {
-                console.log(index.index)
+                // console.log(index.index)
                 const monsterResponse = await fetch(`${API_URL}/races/${index.index}`);
                 const details = await monsterResponse.json();
                 
@@ -105,14 +106,17 @@ const getRaces = async () => {
             })
         );
 
-        raceInfo.forEach((r) =>
-            console.log(
-                `Race: ${r.name}, Size: ${r.size}, Languages: ${r.languages}, Speed: ${r.speed} `
-            )
-        );
+        // raceInfo.forEach((r) =>
+        //     console.log(
+        //         `Race: ${r.name}, Size: ${r.size}, Languages: ${r.languages}, Speed: ${r.speed} `
+        //     )
+        // );
        
     }
     catch(err) {
         console.error("Error fetching D&D Races:", err);   
     }
 };
+
+
+// module.exports = { getClasses, getMonsters, getRaces };
