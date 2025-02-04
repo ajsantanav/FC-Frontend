@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getRaces } from '@/endpoints/getDndInfo';
 
 function useRaces() {
@@ -6,16 +6,22 @@ function useRaces() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(()=> {
+    useEffect(() => {
         const fetchRaces = async () => {
-            const {races} = await getRaces();
-            setRaces()
+            try {
+                const data = await getRaces();
+                setRaces(data.races); // Ensure this matches what `getRaces` returns
+            } catch (err) {
+                setError("Failed to fetch races");
+            } finally {
+                setLoading(false);
+            }
         };
 
-        fetchRaces()
+        fetchRaces();
     }, []);
 
-    return { races, loading, error }
+    return { races, loading, error };
 }
 
-export default useRaces
+export default useRaces;

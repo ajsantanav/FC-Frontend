@@ -82,19 +82,20 @@ export const getMonsters = async () => {
 
 export const getRaces = async () => {
     const url = `${API_URL}/races`;
-    // console.log(url)
+    console.log(url)
     try {
         const response = await fetch(url);
         const raceData = await response.json();
-        // console.log(raceData)
+        console.log(raceData)
 
         const raceInfo = await Promise.all(
-            raceData.results.map(async (index) => {
-                // console.log(index.index)
-                const monsterResponse = await fetch(`${API_URL}/races/${index.index}`);
+            raceData.results.map(async (race) => {
+                console.log(race.index)
+                const monsterResponse = await fetch(`${API_URL}/races/${race.index}`);
                 const details = await monsterResponse.json();
-                
+                // console.log(details)
 
+        
                 return {
                     index: details.index,
                     name: details.name,
