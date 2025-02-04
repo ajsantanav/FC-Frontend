@@ -1,3 +1,4 @@
+/* Landing and collapsing*/
 .collapsible .toggle-collapse {
     background-color: rgb(150, 150, 255);
     color: #fff;
@@ -22,3 +23,44 @@
     overflow: hidden;
     transition: height 0.4s ease-in-out;
 }
+
+
+/*  Auth form*/
+.auth-container {
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    background: #f9f9f9;
+  }
+  
+  .auth-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .auth-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(119, 119, 253);
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .auth-container .error {
+    color: red;
+    font-size: 0.9rem;
+  }
+  
+  .auth-container .toggle {
+    color: rgb(119, 119, 253);
+    cursor: pointer;
+    margin-top: 10px;
+  }
