@@ -1,0 +1,27 @@
+.collapsible .toggle-collapse {
+    background-color: rgb(150, 150, 255);
+    color: #fff;
+    border: unset;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.collapsible .collapseContent {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: .5rem;
+    margin-bottom: 0.5rem;
+}
+
+.collapsible .collapseContent-parent {
+    height: 0px;
+    overflow: hidden;
+    transition: height ease 0.4;
+}
+
+.collapsible .collapseContent.show {
+    height: 400px;
+    transition: height ease 0.4s;
+}
