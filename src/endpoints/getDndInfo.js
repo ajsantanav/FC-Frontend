@@ -82,11 +82,11 @@ export const getMonsters = async () => {
 
 export const getRaces = async () => {
     const url = `${API_URL}/races`;
-    console.log(url)
+    // console.log(url)
     try {
         const response = await fetch(url);
         const raceData = await response.json();
-        console.log(raceData)
+        // console.log(raceData)
 
         const raceInfo = await Promise.all(
             raceData.results.map(async (race) => {
@@ -112,7 +112,7 @@ export const getRaces = async () => {
         //         `Race: ${r.name}, Size: ${r.size}, Languages: ${r.languages}, Speed: ${r.speed} `
         //     )
         // );
-       
+        return { races: raceInfo.filter(race => race !== null) }; // returns races info
     }
     catch(err) {
         console.error("Error fetching D&D Races:", err);   
