@@ -4,10 +4,12 @@ import useCharacter from '@/hooks/useCharacters';
 
 function Profile() {
     const { user, loading: userLoading, error: userError } = useUser();
-    const { characters, loading: charLoading, error: charError, deleteCharacter } = useCharacter();
+    const { characters, loading: charLoading, error: charError, } = useCharacter();
 
     if (userLoading || charLoading) return <p>Loading...</p>;
     if (userError || charError) return <p>Error: {userError || charError}</p>;
+
+ 
 
     return (
         <div className="profileContainer"> 
@@ -39,7 +41,7 @@ function Profile() {
                                     <li>CHA: {char.stats.charisma}</li>
                                 </ul>
                             </div>
-                            <button onClick={()=> handleDelete(char._id)}>Delete</button>
+                            <button>Delete</button>
                         </div>
                     ))
                 ) : (
