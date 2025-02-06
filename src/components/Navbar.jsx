@@ -8,7 +8,7 @@ function Navbar() {
         <li className="navElement"><Link to="/">Home</Link></li>
         <li className="navElement"><Link to="/profile">Profile</Link></li>
         <li className="navElement"><Link to="/creation">Creation</Link></li>
-        {/* <li><Link to="/dice">Dice</Link></li> */}
+        {/* <li><Link to="/login">Registry</Link></li> */}
       </ul>
     </nav>
   );
