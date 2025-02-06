@@ -1,8 +1,8 @@
 import React from 'react'
-
+import CharacterForm from '@/components/CharacterForm'
 function CharacterCreation() {
   return (
-    <div>CharacterCreation</div>
+    <CharacterForm/>
   )
 }
 

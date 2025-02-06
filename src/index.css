@@ -155,57 +155,58 @@ input {
     padding: 20px;
     max-width: 800px;
     margin: auto;
-  }
+}
   
-  .account-details, .char-card {
+.account-details, .char-card {
     background-color: #f4f4f4;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     min-width: 250px;
-  }
+}
   
-  .account-details span {
+.account-details span {
     display: block;
     font-size: 16px;
     margin-bottom: 5px;
-  }
+}
   
-  /* Character Card */
-  .char-card {
+
+.char-card {
     border: 1px solid #ddd;
     padding: 15px;
     display: flex;
+    margin: 10px;
     flex-direction: column;
     align-items: center;
-  }
+}
   
-  .char-info {
+.char-info {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 10px;
-  }
+}
   
-  .char-info .left,
-  .char-info .right {
+.char-info .left,
+.char-info .right {
     display: flex;
     flex-direction: column;
     gap: 5px;
-  }
+ }
   
-  .stats ul {
+.stats ul {
     display: flex;
     justify-content: space-between;
     gap: 10px;
     padding: 0;
-  }
+}
   
-  .stats li {
+.stats li {
     list-style: none;
     background-color: #ddd;
     padding: 5px 10px;
     border-radius: 5px;
     text-align: center;
-  }
+}
   

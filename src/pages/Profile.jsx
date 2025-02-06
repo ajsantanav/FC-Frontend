@@ -14,7 +14,6 @@ function Profile() {
             <div className="account-details">
                 <span>Name: {user?.name} </span>
                 <span>Email: {user?.email}</span> 
-                <input type="submit" value="New Character" />
             </div>
             <div className="char-cards-container">
                 {characters.length > 0 ? (

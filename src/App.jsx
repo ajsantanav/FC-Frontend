@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import Navbar from "./components/Navbar";
 import Profile from "./pages/Profile";
+import CharacterCreation from "./pages/CharacterCreation";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/creation" element={<CharacterCreation />} />
       </Routes>
     </Router>
   );

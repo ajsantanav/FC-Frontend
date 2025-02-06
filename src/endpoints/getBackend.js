@@ -6,7 +6,7 @@ export const getUser = async () => {
         const userInfo = await response.json();
 
         // Log the user info to see the response
-        console.log(userInfo);
+        // console.log(userInfo);
        
         const firstUser = userInfo[0];  
         const name = firstUser.name;
@@ -38,7 +38,7 @@ export const getCharacter = async () => {
         const firstUser = users[0];  // Get the first user (index 0)
         const characters = firstUser.characters; // Access the 'characters' array
 
-        console.log("Characters:", characters); // Log the characters array for debugging
+        // console.log("Characters:", characters); // Log the characters array for debugging
 
         // Return the characters array directly.  No need to create an object unless you need to add other properties.
         return characters;
