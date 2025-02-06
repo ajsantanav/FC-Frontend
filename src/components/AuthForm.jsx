@@ -35,6 +35,16 @@ function AuthForm() {
       <h2>{isLogin ? "Login" : "Create Account"}</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
+      {!isLogin && (
+        <input
+        type="text"
+        name="name"
+        placeholder="John Doe"
+        value={formData.name}
+        onChange={handleChange}
+        required
+      />
+      ) }
         <input
           type="email"
           name="email"
