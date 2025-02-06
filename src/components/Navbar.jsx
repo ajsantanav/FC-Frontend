@@ -5,10 +5,10 @@ function Navbar() {
   return (
     <nav className="navbar-container"> 
       <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/profile">Profile</Link></li>
-        <li><Link to="/creation">Creation</Link></li>
-        <li><Link to="/dice">Dice</Link></li>
+        <li className="navElement"><Link to="/">Home</Link></li>
+        <li className="navElement"><Link to="/profile">Profile</Link></li>
+        <li className="navElement"><Link to="/creation">Creation</Link></li>
+        {/* <li><Link to="/dice">Dice</Link></li> */}
       </ul>
     </nav>
   );

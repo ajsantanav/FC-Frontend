@@ -30,3 +30,4 @@ function useCharacter() {
 }
 
 export default useCharacter;
+
