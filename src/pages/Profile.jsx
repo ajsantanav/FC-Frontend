@@ -1,11 +1,17 @@
 import React from 'react';
+import useUser from '@/hooks/useUser'
+function Profile(
+    
+) {
 
-function Profile() {
+  const { users, loading, error } = useUser();
+
   return (
     <div className="profileContainer"> 
         <div className="account-details">
-            <span>Name: Adrian Santana </span>
-            <span>Email: juniphos@email.com</span>
+            <span>Name: {users.name} </span>
+            <span>Email: {users.email}</span> 
+            <input type="submit" value="New Character" />
         </div>
         <div className="char-cards-container">
             <div className="char-card">
