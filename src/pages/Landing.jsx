@@ -1,11 +1,11 @@
 import React from 'react'
-import useRaces from '../hooks/useRaces';
-import useMonsters from '../hooks/useMonster';
-import useClasses from '../hooks/useClasses';
-import Races from '../components/Races';
-import Monsters from '../components/Monsters'
-import Classes from '../components/Classes';
-import Collapsible from "../components/Collapsible";
+import useRaces from '@/hooks/useRaces';
+import useMonsters from '@/hooks/useMonster';
+import useClasses from '@/hooks/useClasses';
+import Races from '@/components/Races';
+import Monsters from '@/components/Monsters'
+import Classes from '@/components/Classes';
+import Collapsible from "@/components/Collapsible";
 
 function Landing() {
     const { races, loading: racesLoading, error: racesError } = useRaces();

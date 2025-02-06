@@ -5,7 +5,7 @@ function Profile() {
     <div className="profileContainer"> 
         <div className="account-details">
             <span>Name: Adrian Santana </span>
-            <span>Email:  juniphos@email.com</span>
+            <span>Email: juniphos@email.com</span>
         </div>
         <div className="char-cards-container">
             <div className="char-card">

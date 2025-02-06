@@ -1,20 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
-import AuthForm from "./components/AuthForm";
 import Navbar from "./components/Navbar";
 import Profile from "./pages/Profile";
-import CharacterForm from "./components/CharacterForm";
 
 function App() {
-
   return (
-    <>
-    <Navbar/>
-    <Profile/>
-    {/* <CharacterForm/> */}
-    {/* <AuthForm />
-    <Landing /> */}
-    </>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </Router>
   );
 }
 
