@@ -9,7 +9,18 @@ function Profile() {
     if (userLoading || charLoading) return <p>Loading...</p>;
     if (userError || charError) return <p>Error: {userError || charError}</p>;
 
- 
+    const handleDelete = async (charId) => {
+            const response = await fetch(`https://fc-backend-65yq.onrender.com/api/users/67a3c90b40aeb669d29ffe15/characters/${charId}`, {
+                method: 'DELETE',
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json(); 
+                throw new Error(errorData.message || `HTTP error! status: ${response.status}`); 
+            }
+            alert("Character deleted successfully!"); 
+    
+    };
 
     return (
         <div className="profileContainer"> 
@@ -41,7 +52,7 @@ function Profile() {
                                     <li>CHA: {char.stats.charisma}</li>
                                 </ul>
                             </div>
-                            <button>Delete</button>
+                            <button onClick={() => handleDelete(char._id)}>Delete</button>
                         </div>
                     ))
                 ) : (
