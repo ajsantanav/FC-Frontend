@@ -10,7 +10,7 @@ function Races({ races }) {
             <div className="race-card" key={race.index}>
               <h3>{race.name}</h3>
               <img
-                src={`/src/assets/images/${race.name}.png`}
+                src={`./src/assets/images/${race.name}.png`}
                 alt={race.name}
                 className="race-image"
                 onError={(e) => e.target.style.display = 'none'}
