@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getUser } from '@/endpoints/getBackend';
 
 function useUser() {
-    const [users, setUsers] = useState([]);
+    const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -10,9 +10,14 @@ function useUser() {
         const fetchUser = async () => {
             try {
                 const data = await getUser();
-                setUsers(data); // Ensure this matches what `getRaces` returns
+                if (data) {
+                    setUser(data); 
+                } else {
+                    setError("Failed to fetch user data");
+                }
             } catch (err) {
-                setError("Failed to fetch races");
+                setError("Failed to fetch user");
+                console.error("Error in fetchUser:", err);
             } finally {
                 setLoading(false);
             }
@@ -21,7 +26,7 @@ function useUser() {
         fetchUser();
     }, []);
 
-    return { users, loading, error };
+    return { user, loading, error };
 }
 
 export default useUser;

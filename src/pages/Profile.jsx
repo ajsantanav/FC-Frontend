@@ -1,44 +1,53 @@
 import React from 'react';
 import useUser from '@/hooks/useUser'
-function Profile(
-    
-) {
+import useCharacter from '@/hooks/useCharacters';
 
-  const { users, loading, error } = useUser();
+function Profile() {
+    const { user, loading: userLoading, error: userError } = useUser();
+    const { characters, loading: charLoading, error: charError } = useCharacter();
 
-  return (
-    <div className="profileContainer"> 
-        <div className="account-details">
-            <span>Name: {users.name} </span>
-            <span>Email: {users.email}</span> 
-            <input type="submit" value="New Character" />
-        </div>
-        <div className="char-cards-container">
-            <div className="char-card">
-                <div className="char-info">
-                    <div className="left">
-                        <span>Name:</span>
-                        <span>Race:</span>
-                    </div>
-                    <div className="right">
-                        <span>Class:</span>
-                        <span>Level:</span>
-                    </div>
-                </div>
-                <div className="stats">
-                    <ul>
-                        <li>STR: 20</li>
-                        <li>DEX: 20</li>
-                        <li>CON: 20</li>
-                        <li>INT: 20</li>
-                        <li>WIS: 20</li>
-                        <li>CHA: 20</li>
-                    </ul>
-                </div>
+    if (userLoading || charLoading) return <p>Loading...</p>;
+    if (userError || charError) return <p>Error: {userError || charError}</p>;
+
+    return (
+        <div className="profileContainer"> 
+            <div className="account-details">
+                <span>Name: {user?.name} </span>
+                <span>Email: {user?.email}</span> 
+                <input type="submit" value="New Character" />
+            </div>
+            <div className="char-cards-container">
+                {characters.length > 0 ? (
+                    characters.map(char => (
+                        <div className="char-card" key={char._id}>
+                            <div className="char-info">
+                                <div className="left">
+                                    <span>Name: {char.name}</span>
+                                    <span>Race: {char.race}</span>
+                                </div>
+                                <div className="right">
+                                    <span>Class: {char.class}</span>
+                                    <span>Level: {char.level}</span>
+                                </div>
+                            </div>
+                            <div className="stats">
+                                <ul>
+                                    <li>STR: {char.stats.strength}</li>
+                                    <li>DEX: {char.stats.dexterity}</li>
+                                    <li>CON: {char.stats.constitution}</li>
+                                    <li>INT: {char.stats.intelligence}</li>
+                                    <li>WIS: {char.stats.wisdom}</li>
+                                    <li>CHA: {char.stats.charisma}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    ))
+                ) : (
+                    <p>No characters found</p>
+                )}
             </div>
         </div>
-    </div>
-  );
+    );
 }
 
 export default Profile;
